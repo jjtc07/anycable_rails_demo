@@ -4,6 +4,9 @@ ENV["RAILS_ENV"] = "test"
 
 require "spec_helper"
 
+# Run embedded RPC server only in RSpec context (it would break when running migrations on CI otherwise)
+ENV["ANYCABLE_RUN_RPC"] = "true"
+
 begin
   require File.expand_path("../../config/environment", __FILE__)
 rescue => e
